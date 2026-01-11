@@ -41,6 +41,21 @@ export class MaiApp extends FASTElement {
   connectedCallback(): void {
     super.connectedCallback();
 
+    // Select the desired theme based on browser or user preference
+    const prefersDarkScheme = window.matchMedia(
+      '(prefers-color-scheme: dark)',
+    ).matches;
+    this.setTheme('default', prefersDarkScheme ? 'dark' : 'light');
+
+    // Listen for changes in the user's color scheme preference
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', (e) => {
+        this.setTheme('default', e.matches ? 'dark' : 'light');
+      });
+  }
+
+  setTheme(themeName: 'default', mode: 'light' | 'dark'): void {
     const themes = {
       default: {
         light: lightThemeVars,
@@ -48,13 +63,7 @@ export class MaiApp extends FASTElement {
       },
     };
 
-    // Select the desired theme based on browser or user preference
-    const prefersDarkScheme = window.matchMedia(
-      '(prefers-color-scheme: dark)',
-    ).matches;
-    const selectedTheme = prefersDarkScheme
-      ? themes['default']['dark']
-      : themes['default']['light'];
+    const selectedTheme = themes[themeName][mode];
 
     // Set the selected theme CSS variables on the document body
     for (const [key, value] of Object.entries(selectedTheme)) {

@@ -1,12 +1,9 @@
-import {
-  customElement,
-  html,
-  css,
-  FASTElement,
-  observable,
-} from '@microsoft/fast-element';
+import { customElement, html, css, FASTElement } from '@microsoft/fast-element';
 import '@mai-ui/button/define.js';
 import { gapBetweenContentSmall } from '@mai-ui/design-tokens/tokens.js';
+import { inject } from '@microsoft/fast-element/di.js';
+import { CounterService } from '../services/counter-service.ts';
+import './counter-display.js';
 
 const styles = css`
   main {
@@ -26,8 +23,8 @@ const styles = css`
 
 const template = html`
   <main>
-    <p>Counter: <span>${(x) => x.counter}</span></p>
-    <mai-button @click="${(x) => x.counter++}">Increment</mai-button>
+    <counter-display>${(x) => x.cs.count}</counter-display>
+    <mai-button @click="${(x) => x.cs.count++}">Increment</mai-button>
   </main>
 `;
 
@@ -37,5 +34,5 @@ const template = html`
   styles,
 })
 export class AppMain extends FASTElement {
-  @observable counter: number = 0;
+  @inject(CounterService) cs!: CounterService;
 }
