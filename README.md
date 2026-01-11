@@ -8,11 +8,25 @@ Scaffolding for building apps with the MAI-UI design system.
 
 This app runs on nodejs and uses npm. Make sure these are installed before proceeding.
 
+### Cloning
+
+From within an empty project folder run
+
+```bash
+git clone https://github.com/cosorgen/mai-ui-template.git .
+```
+
+Or from the parent directory run
+
+```bash
+git clone https://github.com/cosorgen/mai-ui-template.git
+```
+
 ### Authentication
 
 > **IMPORTANT:** Before installing dependencies and building, you must run the authentication script to access the design system repo.
 
-Run:
+Inside of the project directory run:
 
 ```bash
 npm run authenticate
