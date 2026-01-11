@@ -10,6 +10,8 @@ import {
 } from '@mai-ui/design-tokens/tokens.js';
 import lightThemeVars from '@mai-ui/design-tokens/themes/default.light/default.light.json' with { type: 'json' };
 import darkThemeVars from '@mai-ui/design-tokens/themes/default.dark/default.dark.json' with { type: 'json' };
+import lightCompactThemeVars from '@mai-ui/design-tokens/themes/compact-themed.light/compact-themed.light.json' with { type: 'json' };
+import darkCompactThemeVars from '@mai-ui/design-tokens/themes/compact-themed.dark/compact-themed.dark.json' with { type: 'json' };
 import './components/app-header.js';
 import './components/app-main.js';
 
@@ -55,11 +57,15 @@ export class MaiApp extends FASTElement {
       });
   }
 
-  setTheme(themeName: 'default', mode: 'light' | 'dark'): void {
+  setTheme(themeName: 'default' | 'compact', mode: 'light' | 'dark'): void {
     const themes = {
       default: {
         light: lightThemeVars,
         dark: darkThemeVars,
+      },
+      compact: {
+        light: lightCompactThemeVars,
+        dark: darkCompactThemeVars,
       },
     };
 
