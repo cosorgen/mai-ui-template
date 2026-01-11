@@ -19,7 +19,7 @@ git clone https://github.com/cosorgen/mai-ui-template.git .
 Or from the parent directory run
 
 ```bash
-git clone https://github.com/cosorgen/mai-ui-template.git
+git clone https://github.com/cosorgen/mai-ui-template.git project-name
 ```
 
 ### Authentication

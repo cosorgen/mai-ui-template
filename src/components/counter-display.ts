@@ -10,7 +10,7 @@ const styles = css`
   }
 `;
 
-const template = html` <p>Counter: <slot></slot></p> `;
+const template = html` <p>button clicked: <slot>0</slot></p> `;
 
 @customElement({
   name: 'counter-display',
